@@ -28,23 +28,25 @@
 Для реализации основного меню можно использовать пример ниже или написать свой
 """
 money = 0
-shop_list = {}
-kategory_shop = []
+shop_list = []
+# kategory_shop = []
 while True:
     print('1. пополнение счета')
     print('2. покупка')
     print('3. история покупок')
     print('4. выход')
+    print(money)
 
     choice = input('Выберите пункт меню')
     if choice == '1':
-        money = int(input('введите сумму пополнения счета'))
+        kash = int(input('введите сумму пополнения счета'))
+        money = kash + money
     elif choice == '2':
         price = int(input('введите стоимость покупки'))
         if price < money:
             money = money - price
             kategory_shop = input('введите категорию товара')
-            shop_list.update(kategory_shop = price)
+            shop_list.append((kategory_shop, price))
             print(f'На счету осталось {money} рублей')
         else:
             print('Извините денег на счету не достаточно для покупки товара')

@@ -110,7 +110,7 @@ def pow_many(power, *args):
     rezult = 0
     for number in args:
         rezult += number
-    return rezult * power
+    return rezult ** power
 
 
 print(pow_many(1, 1, 2) == 3)  # True -> (1 + 2)**1 == 3
@@ -128,8 +128,8 @@ def print_key_val(**kwargs):
     :param kwargs: любое количество именованных параметров
     :return: None
     """
-    for key, val in kwargs:
-        print(key, '-->', val)
+    for key, val in kwargs.items():
+        print(f'{key} --> {val}')
 
 
 
@@ -155,7 +155,11 @@ def my_filter(iterable, function):
     :param function: функция фильтрации
     :return: новая отфильтрованная последовательность
     """
-    pass
+    result = []
+    for item in iterable:
+        if function(item):
+            result.append(item)
+    return result
 
 
 print(my_filter([1, 2, 3, 4, 5], lambda x: x > 3) == [4, 5])  # True
